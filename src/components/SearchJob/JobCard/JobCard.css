@@ -1,0 +1,127 @@
+.job-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.25rem;
+  max-width: 22.5rem;
+  padding: 0.625rem 0.3125rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0rem 0.0625rem 0.25rem 0rem;
+  padding: 1rem;
+}
+
+.job-card__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.job-card__company-img {
+  width: 1.5625rem;
+  height: 2.5rem;
+}
+
+.job-card__job-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.job-card__company-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.0625rem;
+  margin-bottom: 0.1875rem;
+  color: #8b8b8b;
+}
+
+.job-card__company-job-role {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.job-card__company-job-location {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  margin-top: 0.3125rem;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.job-card__est-salary {
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+  color: rgb(77, 89, 106);
+  text-align: left;
+}
+
+.job-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+}
+
+.job-card__about-sec-title {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.job-card__about-sec-details {
+  font-weight: 300;
+  font-size: 0.875rem;
+  max-height: 10rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.job-card__about-sec-details::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.125rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.job-card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.job-card__footer-min-exp {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.0625rem;
+  margin-bottom: 0.1875rem;
+  color: #8b8b8b;
+  margin-top: 0.625rem;
+}
+
+.job-card__footer-min-exp-value {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 0.625rem;
+}
+
+.job-card__view-job-btn {
+  margin: auto;
+  font-weight: 200;
+  cursor: pointer;
+  color: blue;
+}
