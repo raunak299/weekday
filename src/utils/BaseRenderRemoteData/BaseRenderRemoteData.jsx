@@ -10,13 +10,12 @@
  * @returns {JSX.Element} - The rendered component based on the state of the remote data.
  */
 
-export default function BaseRenderRemoteData({remoteDataState, render}) {
-    if(remoteDataState.loading) {
-        return <h1>Loading...</h1>
-    }
-    if(remoteDataState.error) {
-        return <h1>Error...</h1>
-    }
-    return render(remoteDataState.data);
+export default function BaseRenderRemoteData({ remoteDataState, render }) {
+  if (remoteDataState.loading) {
+    return <h1>Loading...</h1>;
+  }
+  if (remoteDataState.error) {
+    return <h1>Error...</h1>;
+  }
+  return render(remoteDataState.data);
 }
-
