@@ -1,0 +1,46 @@
+.MuiTextField-root{
+ padding:.3rem !important;
+}
+
+.MuiInputLabel-root{
+    font-size:.8rem !important;
+    font-weight:400;
+    color: rgb(128, 128, 128) !important;
+    max-width: calc(100% - 48px) !important;
+}
+
+.MuiOutlinedInput-root{
+    padding: .5rem !important       ;
+}
+
+.MuiAutocomplete-input{
+    height: 1rem !important;
+    font-size:1rem !important;
+    font-weight:400 !important;
+    color: rgb(51, 51, 51) !important;
+    width:fit-content !important;
+    padding:.3rem !important;
+}
+
+.MuiAutocomplete-tag{
+    display: flex !important;
+    min-width: 0px !important;
+    background-color: rgb(230, 230, 230) !important;
+    border-radius: 2px !important;
+    margin: 2px !important;
+    font-size: .9rem !important;
+    padding: 3px 6px !important;
+    line-height: normal !important;
+    height:unset !important
+}
+
+.MuiAutocomplete-tag > svg{
+    width: 1em !important;
+    height: 1em !important;
+    margin-right: 4px !important;
+    height:1rem !important ;
+}
+
+.MuiAutocomplete-tag > svg:hover {
+    fill:red;
+}
