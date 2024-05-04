@@ -20,12 +20,10 @@ export default function Dropdown(props) {
       options={options}
       getOptionLabel={getOptionLabel}
       groupBy={groupBy}
-    //   limitTags={1}
       value={value}
       onChange={onChange}
       fullWidth={fullWidth}
       renderInput={(params) => {
-        console.log("params", params);
         return <TextField {...params} label={label} />;
       }}
       multiple={multiple}
