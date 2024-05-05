@@ -7,6 +7,7 @@
   border-right: 0.125rem solid rgb(223, 221, 221);
   padding: 2rem;
   padding-top: 2rem;
+  min-height:100vh;
 }
 
 .infinite-scroll-content {
