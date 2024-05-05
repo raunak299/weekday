@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { LIMIT } from "../../constants";
+import { useSelector, useDispatch } from "react-redux";
+import { dataActions } from "../../store/data-slice";
 
 const useGetJobsListing = () => {
-  const [remoteDataState, setRemoteDataState] = useState({
-    data: [],
-    loading: true,
-    message: "Loading ...",
-  });
+  console.log();
+  const { jobs, filters } = useSelector((store) => store.dataStore);
+  const dispatch = useDispatch();
+
   const [hasMore, setHasMore] = useState(true);
 
   const fetchJobs = async (params) => {
@@ -26,11 +27,13 @@ const useGetJobsListing = () => {
     };
 
     try {
-      setRemoteDataState({
-        data: remoteDataState.data,
-        loading: true,
-        message: "Loading ...",
-      });
+      dispatch(
+        dataActions.setRemoteDataState({
+          data: jobs,
+          loading: true,
+          message: "Loading ...",
+        })
+      );
       const response = await fetch(
         "https://api.weekday.technology/adhoc/getSampleJdJSON",
         requestOptions
@@ -39,22 +42,26 @@ const useGetJobsListing = () => {
       if (data.jdList.length === 0) {
         setHasMore(false);
       }
-      setRemoteDataState({
-        data: [...remoteDataState.data, ...data.jdList],
-        success: true,
-        message: "Success",
-      });
+      dispatch(
+        dataActions.setRemoteDataState({
+          data: [...jobs, ...data.jdList],
+          success: true,
+          message: "Success",
+        })
+      );
+      dispatch(dataActions.setFilteredJobs({ filters }));
     } catch (error) {
-      setRemoteDataState({
-        data: remoteDataState.data,
-        error: true,
-        message: "Something went wrong !!",
-      });
+      dispatch(
+        dataActions.setRemoteDataState({
+          data: jobs,
+          error: true,
+          message: "Something went wrong !!",
+        })
+      );
     }
   };
 
   return {
-    remoteDataState,
     fetchJobs,
     hasMore,
   };
