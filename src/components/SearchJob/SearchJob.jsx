@@ -20,14 +20,13 @@ export default function SearchJob() {
       error={error}
       errorMsg={() => <Error message={message} />}
       hasMore={hasMore}
+      classes={{ itemsSection: "infinite-scroll-content" }}
     >
-      <div className="job-search-sec">
-        {jobs.map((job) => (
-          <div key={job.jdUid}>
-            <JobCard {...job} key={job.jdUid} />
-          </div>
-        ))}
-      </div>
+      {jobs.map((job) => (
+        <div key={job.jdUid}>
+          <JobCard {...job} key={job.jdUid} />
+        </div>
+      ))}
     </InfiniteScroll>
   );
 }
