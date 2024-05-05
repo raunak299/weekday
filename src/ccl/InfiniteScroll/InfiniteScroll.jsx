@@ -1,36 +1,47 @@
-import React, { useRef } from "react";
+import React, { useCallback, useRef } from "react";
+import "./InfiniteScroll.css";
 
 export default function InfiniteScroll({
   fetchMore,
   children,
   loadingMsg,
-  listLength,
   loading,
+  errorMsg,
+  error,
+  listLength,
   hasMore,
 }) {
   const observer = useRef();
-  const lastProductElement = (node) => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && hasMore) {
-        fetchMore();
-      }
-    });
-    if (node) observer.current.observe(node);
-  };
+  const lastItemRef = useCallback(
+    (node) => {
+      if (loading || error) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          fetchMore();
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading]
+  );
 
   return (
     <div className="infinite-scroll">
-      {React.Children.map(children, (child, index) => {
-        if (index + 1 === listLength) {
-          return React.cloneElement(child, {
-            ref: lastProductElement,
-          });
-        }
-        return React.cloneElement(child);
-      })}
-      {loading && hasMore && loadingMsg()}
+      <section>
+        {React.Children.map(children, (child, index) => {
+          if (index + 1 === listLength) {
+            return React.cloneElement(child, {
+              ref: lastItemRef,
+            });
+          }
+          return React.cloneElement(child);
+        })}
+      </section>
+      <section>
+        {loading && hasMore && loadingMsg()}
+        {error && errorMsg()}
+      </section>
     </div>
   );
 }
