@@ -10,6 +10,7 @@ export default function InfiniteScroll({
   error,
   listLength,
   hasMore,
+  classes,
 }) {
   const observer = useRef();
   const lastItemRef = useCallback(
@@ -26,9 +27,11 @@ export default function InfiniteScroll({
     [loading]
   );
 
+  const itemsSection = classes ? classes.itemsSection : "";
+
   return (
-    <div className="infinite-scroll">
-      <section>
+    <div className={`infinite-scroll`}>
+      <section className={itemsSection}>
         {React.Children.map(children, (child, index) => {
           if (index + 1 === listLength) {
             return React.cloneElement(child, {
