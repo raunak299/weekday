@@ -5,19 +5,20 @@ import { LIMIT } from "../../constants";
 const useJobSearch = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  const { remoteDataState, fetchJobs, hasMore } = useGetJobsListing();
+
   const fetchMoreJobs = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  const { remoteDataState, fetchJobs } = useGetJobsListing();
-
   useEffect(() => {
-    fetchJobs(currentPage - 1 * LIMIT);
+    fetchJobs({ offset: (currentPage - 1) * LIMIT });
   }, [currentPage]);
 
   return {
     remoteDataState,
     fetchMoreJobs,
+    hasMore,
   };
 };
 

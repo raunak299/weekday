@@ -7,8 +7,10 @@ const useGetJobsListing = () => {
     loading: true,
     message: "Loading ...",
   });
+  const [hasMore, setHasMore] = useState(true);
 
-  const fetchJobs = async ({ offset }) => {
+  const fetchJobs = async (params) => {
+    const { offset } = params;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -24,20 +26,29 @@ const useGetJobsListing = () => {
     };
 
     try {
+      setRemoteDataState({
+        data: remoteDataState.data,
+        loading: true,
+        message: "Loading ...",
+      });
       const response = await fetch(
         "https://api.weekday.technology/adhoc/getSampleJdJSON",
         requestOptions
       );
       const data = await response.json();
-      console.log("data", data);
+      if (data.jdList.length === 0) {
+        setHasMore(false);
+      }
       setRemoteDataState({
-        data: data.jdList,
-        success: "Success",
+        data: [...remoteDataState.data, ...data.jdList],
+        success: true,
+        message: "Success",
       });
     } catch (error) {
       setRemoteDataState({
+        data: remoteDataState.data,
         error: true,
-        message: "Something went wrong ..",
+        message: "Something went wrong !!",
       });
     }
   };
@@ -45,6 +56,7 @@ const useGetJobsListing = () => {
   return {
     remoteDataState,
     fetchJobs,
+    hasMore,
   };
 };
 
