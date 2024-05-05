@@ -3,6 +3,7 @@ import InfiniteScroll from "../../ccl/InfiniteScroll/InfiniteScroll";
 import useJobSearch from "../../hooks/useJobSearch/useJobSearch";
 import JobCard from "./JobCard/JobCard";
 import "./SearchJob.css";
+import SearchJobFilters from "./SearchJobFilters/SearchJobFilters";
 
 export default function SearchJob() {
   const { remoteDataState, fetchMoreJobs, hasMore } = useJobSearch();
@@ -12,21 +13,24 @@ export default function SearchJob() {
   const jobs = remoteDataState.data;
 
   return (
-    <InfiniteScroll
-      fetchMore={fetchMoreJobs}
-      listLength={jobs.length}
-      loading={loading}
-      loadingMsg={() => <Loader message={message} />}
-      error={error}
-      errorMsg={() => <Error message={message} />}
-      hasMore={hasMore}
-      classes={{ itemsSection: "infinite-scroll-content" }}
-    >
-      {jobs.map((job) => (
-        <div key={job.jdUid}>
-          <JobCard {...job} key={job.jdUid} />
-        </div>
-      ))}
-    </InfiniteScroll>
+    <div className="search-job-sec">
+      <SearchJobFilters />
+      <InfiniteScroll
+        fetchMore={fetchMoreJobs}
+        listLength={jobs.length}
+        loading={loading}
+        loadingMsg={() => <Loader message={message} />}
+        error={error}
+        errorMsg={() => <Error message={message} />}
+        hasMore={hasMore}
+        classes={{ itemsSection: "infinite-scroll-content" }}
+      >
+        {jobs.map((job) => (
+          <div key={job.jdUid}>
+            <JobCard {...job} key={job.jdUid} />
+          </div>
+        ))}
+      </InfiniteScroll>
+    </div>
   );
 }

@@ -1,6 +1,17 @@
-.infinite-scroll-content{
+.search-job-sec {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  border-left: 0.125rem solid rgb(223, 221, 221);
+  border-right: 0.125rem solid rgb(223, 221, 221);
+  padding: 2rem;
+  padding-top: 2rem;
+}
+
+.infinite-scroll-content {
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
 }
