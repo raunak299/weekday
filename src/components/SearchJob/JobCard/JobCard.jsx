@@ -79,6 +79,7 @@ export default function JobCard(props) {
         <Button
           label="Easy Apply"
           icon={<BoltIcon sx={{ color: "#ffc83d" }} />}
+          onClick={() => jdLink && window.open(jdLink, "_blank")}
         />
       </div>
     </div>

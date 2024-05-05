@@ -15,3 +15,7 @@
   flex-wrap: wrap;
   gap: 2rem;
 }
+
+.no-jobs {
+  color: rgba(85, 239, 196);
+}

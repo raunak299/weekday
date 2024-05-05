@@ -1,5 +1,6 @@
 import CompanyFilter from "./CompanyFilter";
 import JobTypeFilter from "./JobTypeFilter";
+import LocationFilter from "./LocationFilter";
 import MinimumBaseFilter from "./MinBaseFilter";
 import MinExperienceFilter from "./MinExperienceFilter";
 import RoleFilter from "./RoleFilter";
@@ -19,6 +20,9 @@ export default function SearchJobFilters() {
       </div>
       <div className="search-job-filter">
         <MinimumBaseFilter />
+      </div>
+      <div>
+        <LocationFilter />
       </div>
       <div className="search-job-filter">
         <CompanyFilter />

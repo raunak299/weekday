@@ -14,6 +14,10 @@ export default function Dropdown(props) {
     multiple = false,
   } = props;
 
+  const onChangeHandler = (e, value) => {
+    onChange && onChange(e, value);
+  };
+
   return (
     <Autocomplete
       id={id}
@@ -21,7 +25,7 @@ export default function Dropdown(props) {
       getOptionLabel={getOptionLabel}
       groupBy={groupBy}
       value={value}
-      onChange={onChange}
+      onChange={onChangeHandler}
       fullWidth={fullWidth}
       renderInput={(params) => {
         return <TextField {...params} label={label} />;

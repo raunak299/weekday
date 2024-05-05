@@ -1,13 +1,8 @@
-
-import './App.css'
+import "./App.css";
+import SearchJob from "./components/SearchJob/SearchJob";
 
 function App() {
-
-  return (
-    <>
-     <h1>hello world</h1>  
-    </>
-  )
+  return <SearchJob />;
 }
 
-export default App
+export default App;
